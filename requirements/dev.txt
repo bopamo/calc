@@ -1,7 +1,7 @@
 -r test.txt
 pip==19.2.3
 punch.py==1.6.2
-wheel
+wheel==0.33.6
 watchdog
 flake8
 Sphinx
