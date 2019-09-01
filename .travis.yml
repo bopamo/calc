@@ -1,6 +1,9 @@
+# Config file for automatic testing at travis-ci.org
+
+
 language: python
 python:
-- '3.5'
+    - '3.5'
 matrix:
   include:
   - python: '3.5'
@@ -14,12 +17,12 @@ install:
 - pip install tox-travis
 script: tox -e ${TOXENV}
 deploy:
-  provider: pypi
-  distributions: sdist bdist_wheel
-  user: bopamo
-  password:
-    secure: E1JYW3pPDqAIPK5xvwFd6SWSTp1kAbziSKRJB0Yp7vuefW1yEkS0sNtoNsSE4gJTfycVCH2NO3Ob+exSpNX99FUOK79AMWfGUkzEglUbVzu9XPAeJuMqPe/9LI9dc6D5IRiWNxQgwKp3ZWGBSnCEw7IdCm9P3c+o+MotQkO1iroJAOk8zUNvrLsB3O554Sfrd0uZdK6kH/qI/sI0LnHZitDgPvBJm4NeJZ2ieH15Ma2qDESn5eAhBjtOvIN6r1WepiY4UyGpXBWL03458mGilHCsQbhrHo1R4jJBMVSjGEf0di09TrfsYh6OqCinW2TITYnAHan34O2GMQ5O3ZhU/d3Ti/BbKF3r8SnfyJlgIrNeN6RSmdKlszNQMty8rnjq6dXXCgeYs2IhmXfUKd4+fx2NvaisWz3oIujyJU5M1DcEc8DeHs2T6jSqFAPQhtTG403RXRWJMoHI3JQloL0LccadS9b3PuVVD9RpIAiZGrO+K5gCpy8v0/qksTjolEc+yD4PuhUaeVoeSfT5JtHYK7M/v7dyfLvWymFfkH40W+i03nrA2Nho7P68J2VXPLz5rl3I9upSr5xu2msGIWzcAS6p76yc38pl5RpTTcHl7X/j8VPx405ZExYKyBbaNCYcyjcu8E2GVwahgM8a9YH6zT6cP1zSJ87msqA5g6QhUMI=
-  on: 
-  tags: true
-  repo: bopamo/calc
-  condition: "$TOXENV == py27"
+    provider: pypi
+    distributions: sdist bdist_wheel
+    user: bopamo
+    password:
+        secure: E1JYW3pPDqAIPK5xvwFd6SWSTp1kAbziSKRJB0Yp7vuefW1yEkS0sNtoNsSE4gJTfycVCH2NO3Ob+exSpNX99FUOK79AMWfGUkzEglUbVzu9XPAeJuMqPe/9LI9dc6D5IRiWNxQgwKp3ZWGBSnCEw7IdCm9P3c+o+MotQkO1iroJAOk8zUNvrLsB3O554Sfrd0uZdK6kH/qI/sI0LnHZitDgPvBJm4NeJZ2ieH15Ma2qDESn5eAhBjtOvIN6r1WepiY4UyGpXBWL03458mGilHCsQbhrHo1R4jJBMVSjGEf0di09TrfsYh6OqCinW2TITYnAHan34O2GMQ5O3ZhU/d3Ti/BbKF3r8SnfyJlgIrNeN6RSmdKlszNQMty8rnjq6dXXCgeYs2IhmXfUKd4+fx2NvaisWz3oIujyJU5M1DcEc8DeHs2T6jSqFAPQhtTG403RXRWJMoHI3JQloL0LccadS9b3PuVVD9RpIAiZGrO+K5gCpy8v0/qksTjolEc+yD4PuhUaeVoeSfT5JtHYK7M/v7dyfLvWymFfkH40W+i03nrA2Nho7P68J2VXPLz5rl3I9upSr5xu2msGIWzcAS6p76yc38pl5RpTTcHl7X/j8VPx405ZExYKyBbaNCYcyjcu8E2GVwahgM8a9YH6zT6cP1zSJ87msqA5g6QhUMI=
+  on:
+      tags: true
+      repo: bopamo/calc
+      condition: "$TOXENV == py27"
