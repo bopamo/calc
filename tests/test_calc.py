@@ -10,21 +10,55 @@ Tests for `calc` module.
 
 import pytest
 
-
-from calc import calc
-
-
-@pytest.fixture
-def response():
-    """Sample pytest fixture.
-    See more at: http://doc.pytest.org/en/latest/fixture.html
-    """
-    # import requests
-    # return requests.get('https://github.com/audreyr/cookiecutter-pypackage')
+from calc.calc import Calc
 
 
-def test_content(response):
-    """Sample pytest test function with the pytest fixture as an argument.
-    """
-    # from bs4 import BeautifulSoup
-    # assert 'GitHub' in BeautifulSoup(response.content).title.string
+def test_add_two_numbers():
+    c = Calc()
+
+    res = c.add(4, 5)
+
+    assert res == 9
+
+
+def test_add_three_numbers():
+    c = Calc()
+
+    res = c.add(4, 5, 6)
+
+    assert res == 15
+
+
+def test_add_many_numbers():
+    s = range(100)
+
+    assert Calc().add(*s) == 4950
+
+
+def test_subtract_two_numbers():
+    c = Calc()
+
+    res = c.sub(10, 3)
+
+    assert res == 7
+
+
+def test_subtract_two_numbers_negative():
+    c = Calc()
+
+    res = c.sub(9999, 9999999111111)
+
+    assert res == 9999 - 9999999111111
+
+def test_mul_two_numbers():
+    c = Calc()
+
+    res = c.mul(6, 4)
+
+    assert res == 24
+
+
+def test_mul_many_numbers():
+    s = range(1, 10)
+
+    assert Calc().mul(*s) == 362880
