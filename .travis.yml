@@ -1,30 +1,45 @@
 language: python
 python:
-- "3.7"
-- "3.6"
-- "3.5"
-- "3.4"
-- "2.7"
-- "pypy"
+    - "3.7"
+    - "3.6"
+    - "3.5"
+    - "3.4"
+    - "2.7"
+    - "pypy"
 
-env:
-- TOXENV=py27
-- TOXENV=py34
-- TOXENV=py35
-- TOXENV=py36
-- TOXENV=py37
-- TOXENV=pypy
+#env:
+#    - TOXENV=py27
+#    - TOXENV=py34
+#    - TOXENV=py35
+#    - TOXENV=py36
+#    - TOXENV=py37
+#    - TOXENV=pypy
+
+matrix:
+    include:
+        -   python: "2.7"
+        env: TOXENV=py27
+        -   python: "3.4"
+        env: TOXENV=py34
+        -   python: "3.5"
+        env: TOXENV=py35
+        -   python: "3.6"
+        env: TOXENV=py36
+        -   python: "3.7"
+        env: TOXENV=py37
+        -   python: "pypy"
+        env: TTOXENV=pypy
 install:
-- pip install -U tox
-- pip install tox-travis
+    - pip install -U tox
+    - pip install tox-travis
 script: tox -e ${TOXENV}
 deploy:
-  provider: pypi
-  distributions: sdist bdist_wheel
-  user: bopamo
-  password:
-    secure: PkTYe8/1DFv0igLdeo1yZoVlfTIOMOES3c8qOQjubtHxtR3gzoKbP3+uL8/J3qKrjiU6d5XSiHHszvgvPZqE8wwM+9g4WyuMUHRzXIS1nN+YAXBpVYRfIrjcQmyH/HuQWFPxTXuUqFLuZEXc59rCjMjIia0F/m3Zt9COw9yg1DJmBbr9XjRSC+x1OuIvaizjdRRaU00dndyOHIc8uyFs5x/AtrpDtxK85Fdy2BbgQHeVFHfIhNK7MzvRS0Enaq0l+pToKXnlm0N5IKp1eJULOso6wK5DwzP+WhPvycxoI4PdYv+P5fDRI+dBiSH/zBtYTms3Ly2Y91A9NCwoXxh2rS8NdersL+xdyDkS0DAQtW4AFpBd152JtMQAozcWv+WOYLsJfJ0PsqDpG79CWnoTlrIPNd0nOfEQRIxgDfUnLMB9EZ+pmDTY2IusD9oVWeNUJPNqDArBcZL/RT5PjW32m3vwQeSXn6RV8X73wteUTumPw7hYTPXBP4/06Gt1vjOYtB/c7XlUci1BhycYSHi7d0qeyXJay+blAiKvFR0NYbzxqN3CvgpZrcND9kVu6c5jw39PMGMW1JkUJgYojQGR4h+vQRe1ctTpNsvkrbXzsgTZqoZISLVFBNLpjIh7s8BQ20NagO8vXPT8NOTDE8L8zF8H/FrFh9M51GrfmIrqV4s=
-  on:
-    tags: true
-    repo: bopamo/calc
-    condition: "$TOXENV == py27"
+    provider: pypi
+    distributions: sdist bdist_wheel
+    user: bopamo
+    password:
+        secure: PkTYe8/1DFv0igLdeo1yZoVlfTIOMOES3c8qOQjubtHxtR3gzoKbP3+uL8/J3qKrjiU6d5XSiHHszvgvPZqE8wwM+9g4WyuMUHRzXIS1nN+YAXBpVYRfIrjcQmyH/HuQWFPxTXuUqFLuZEXc59rCjMjIia0F/m3Zt9COw9yg1DJmBbr9XjRSC+x1OuIvaizjdRRaU00dndyOHIc8uyFs5x/AtrpDtxK85Fdy2BbgQHeVFHfIhNK7MzvRS0Enaq0l+pToKXnlm0N5IKp1eJULOso6wK5DwzP+WhPvycxoI4PdYv+P5fDRI+dBiSH/zBtYTms3Ly2Y91A9NCwoXxh2rS8NdersL+xdyDkS0DAQtW4AFpBd152JtMQAozcWv+WOYLsJfJ0PsqDpG79CWnoTlrIPNd0nOfEQRIxgDfUnLMB9EZ+pmDTY2IusD9oVWeNUJPNqDArBcZL/RT5PjW32m3vwQeSXn6RV8X73wteUTumPw7hYTPXBP4/06Gt1vjOYtB/c7XlUci1BhycYSHi7d0qeyXJay+blAiKvFR0NYbzxqN3CvgpZrcND9kVu6c5jw39PMGMW1JkUJgYojQGR4h+vQRe1ctTpNsvkrbXzsgTZqoZISLVFBNLpjIh7s8BQ20NagO8vXPT8NOTDE8L8zF8H/FrFh9M51GrfmIrqV4s=
+    on:
+        tags: true
+        repo: bopamo/calc
+        condition: "$TOXENV == py27"
