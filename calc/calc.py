@@ -31,6 +31,9 @@ class Calc:
 
     def avg(self, it, lt=None, ut=None):
 
+        if not len(it):
+            return 0
+
         if not lt:
             lt = min(it)
 
@@ -40,5 +43,8 @@ class Calc:
         # _it = [x for x in it if x >= lt and x <= ut]
 
         _it = [x for x in it if lt <= x <= ut]
+
+        if not len(_it):
+            return 0
 
         return sum(_it) / len(_it)
