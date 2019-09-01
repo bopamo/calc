@@ -19,7 +19,7 @@ class Calc:
 
         if not all(args):
             raise ValueError
-        
+
         return reduce(lambda x, y: x * y, args)
 
     def div(self, a, b):
@@ -28,3 +28,17 @@ class Calc:
             return a / b
         except ZeroDivisionError:
             return "inf"
+
+    def avg(self, it, lt=None, ut=None):
+
+        if not lt:
+            lt = min(it)
+
+        if not ut:
+            ut = max(it)
+
+        # _it = [x for x in it if x >= lt and x <= ut]
+
+        _it = [x for x in it if lt <= x <= ut]
+
+        return sum(_it) / len(_it)
