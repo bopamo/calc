@@ -111,3 +111,57 @@ def test_avg_removes_lower_outliers():
 
     assert res == pytest.approx(55)
 
+
+def test_avg_upper_threshold_is_included():
+    c = Calc()
+
+    res = c.avg([2, 5, 12, 98], ut=98)
+
+    assert res == 29.25
+
+
+def test_avg_lower_threshold_is_included():
+    c = Calc()
+
+    res = c.avg([2, 5, 12, 98], lt=2)
+
+    assert res == 29.25
+
+
+def test_avg_empty_list():
+    c = Calc()
+
+    res = c.avg([])
+
+    assert res == 0
+
+
+def test_avg_manages_empty_list_after_outlier_removal():
+    c = Calc()
+
+    res = c.avg([12, 98], lt=15, ut=90)
+
+    assert res == 0
+
+
+def test_avg_manages_empty_list_before_outlier_removal():
+    c = Calc()
+
+    res = c.avg([], lt=15, ut=90)
+
+    assert res == 0
+
+
+def test_avg_manages_zero_value_lower_outlier():
+    c = Calc()
+
+    res = c.avg([-1, 0, 1], lt=0)
+
+    assert res == 0.5
+
+def test_avg_manages_zero_value_upper_outlier():
+    c = Calc()
+
+    res = c.avg([-1, 0, 1], ut=0)
+
+    assert res == -0.5

@@ -30,15 +30,15 @@ class Calc:
             return "inf"
 
     def avg(self, it, lt=None, ut=None):
+        _it = it[:]
 
-        if not lt:
-            lt = min(it)
+        if lt is not None:
+            _it = [x for x in _it if x >= lt]
 
-        if not ut:
-            ut = max(it)
+        if ut is not None:
+            _it = [x for x in _it if x <= ut]
 
-        # _it = [x for x in it if x >= lt and x <= ut]
+        if not len(_it):
+            return 0
 
-        _it = [x for x in it if lt <= x <= ut]
-
-        return sum(_it) / len(_it)
+        return sum(_it)/len(_it)
