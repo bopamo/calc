@@ -49,3 +49,16 @@ def test_subtract_two_numbers_negative():
     res = c.sub(9999, 9999999111111)
 
     assert res == 9999 - 9999999111111
+
+def test_mul_two_numbers():
+    c = Calc()
+
+    res = c.mul(6, 4)
+
+    assert res == 24
+
+
+def test_mul_many_numbers():
+    s = range(1, 10)
+
+    assert Calc().mul(*s) == 362880
