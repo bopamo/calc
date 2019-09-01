@@ -14,7 +14,9 @@ env:
 - TOXENV=py36
 - TOXENV=py37
 - TOXENV=pypy
-install: pip install -U tox
+install:
+- pip install -U tox
+- pip install tox-travis
 script: tox -e ${TOXENV}
 deploy:
   provider: pypi
